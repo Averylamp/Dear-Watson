@@ -1,0 +1,6 @@
+{
+    "main": "app.js",
+    "dependencies": {
+        "sync-request": "^4.1.0"
+    }
+}
