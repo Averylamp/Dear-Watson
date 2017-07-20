@@ -17,7 +17,7 @@ var _features = {
           'sentiment': true
         }
 }
-_features.keywords.limit = params.limit
+//_features.keywords.limit = params.limit
 
 var options = {
     headers: headers,
