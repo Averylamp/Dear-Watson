@@ -18,8 +18,8 @@ class InfoViewController: UIViewController {
     @IBOutlet var textLabels: [UILabel]!
     
     
-    let titleText = ["Dear Watson","Emotional Analysis","Self Awareness","Extra Info"]
-    let infoText = ["Dear Watson is your very own personal journal taking solution.  With each journal entry, Watson analyzes it in order to give you information about yourself, your emotions, and the highlights of your day.  \n\n","Every journal post you make in Dear Watson is analyzed by using the Watson ___________ API.  The analysis of what you say is broken up into _ emotions: happy, sad, cheerful, emotion, emotion, and emotion.  Each ","Even more interesting information about WhiskBot","Last bits of interesting information about Whiskbot"]
+    let titleText = ["Dear Watson","Emotional Analysis","Self Awareness","Fun Fact"]
+    let infoText = ["Dear Watson is your very own personal journal taking solution.  With each journal entry, Watson analyzes it in order to give you information about yourself, your emotions, and the highlights of your day.  \n\n","Every journal post you make in Dear Watson is analyzed by using the Watson Tone Analyzer and NLU APIs.  The analysis of what you say is broken up into 5 emotions: happiness, sadness, disgust, fear, and anger. Each ","The intensity of the emotions you feel each day are recorded for you to reflect on and understand your emotional well-being.","The colors of the emotion graphs correspond with the characters from 'Inside Out' :) "]
     
     override func viewDidLoad() {
         super.viewDidLoad()

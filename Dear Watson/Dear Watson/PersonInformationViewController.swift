@@ -30,7 +30,6 @@ class PersonInformationViewController: UIViewController {
         
         
         scrollView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height - 100)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 2)
         self.view.addSubview(self.scrollView)
         
         
@@ -46,12 +45,22 @@ class PersonInformationViewController: UIViewController {
         let margin = CGFloat(20)
         
         // Happy
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😁", color: UIColor.magenta)
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😁", color: UIColor.yellow)
         
         y = y + titleHeight + graphHeight + margin
         
         // Sad
         self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.blue)
+        
+        y = y + titleHeight + graphHeight + margin
+        
+        // Disgust
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.green)
+        
+        y = y + titleHeight + graphHeight + margin
+        
+        // Fear
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.purple)
         
         y = y + titleHeight + graphHeight + margin
         
