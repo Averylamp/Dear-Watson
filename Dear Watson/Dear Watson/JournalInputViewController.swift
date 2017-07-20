@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 let joyfulFace = "😀"
 let sadFace = "😢"
@@ -16,6 +18,8 @@ let angryFace = "😡"
 let smileyFace = "😁"
 
 class JournalInputViewController: UIViewController {
+    
+    var synth = AVSpeechSynthesizer()
     
     var appleSpeechAnalyzer =  AppleSpeechController()
     var speechActive = false
@@ -43,10 +47,25 @@ class JournalInputViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func nextQuestionClicked(_ sender: Any) {
+        
+    }
+    
+    func askQuestion(question:String){
+        speakResponse(text: question)
+        questionLabel.text = question
+        
+        
+        
     }
     
     let buttonTransitionAnimationTime = 0.5
-    
+    func speakResponse(text:String){
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.5
+        utterance.volume = 1.0
+        self.synth.speak(utterance)
+    }
 }
 
 extension JournalInputViewController: AppleSpeechFeedbackProtocall{

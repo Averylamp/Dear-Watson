@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>To translate speech to text</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Speech to text to talk to Watson</string>
 </dict>
 </plist>

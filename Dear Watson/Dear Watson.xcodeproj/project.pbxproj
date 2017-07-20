@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13FD3FFB5BDE742294178B75 /* Pods_Dear_Watson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F832A27A8575F21C9B3837 /* Pods_Dear_Watson.framework */; };
+		2E74A06C0CB50D5873098BB7 /* Pods_Dear_WatsonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266898CAF6FBB31FCE81F9AD /* Pods_Dear_WatsonUITests.framework */; };
+		4CD657A5345BB45A90FEB3C8 /* Pods_Dear_WatsonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9280D8B8CF70FBB02ADFAB31 /* Pods_Dear_WatsonTests.framework */; };
 		7F0750FF1F21080A00C3731F /* AppleSpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0750FC1F21080A00C3731F /* AppleSpeechController.swift */; };
 		7F0751001F21080A00C3731F /* ColorSchemer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0750FD1F21080A00C3731F /* ColorSchemer.swift */; };
 		7F0751011F21080A00C3731F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0750FE1F21080A00C3731F /* InfoViewController.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D06661A2D5D0D90BD6DAB38 /* Pods-Dear WatsonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		266898CAF6FBB31FCE81F9AD /* Pods_Dear_WatsonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_WatsonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34829CA86F658B1CB84A3464 /* Pods-Dear Watson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear Watson.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson.debug.xcconfig"; sourceTree = "<group>"; };
 		7F0750FC1F21080A00C3731F /* AppleSpeechController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSpeechController.swift; sourceTree = "<group>"; };
 		7F0750FD1F21080A00C3731F /* ColorSchemer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemer.swift; sourceTree = "<group>"; };
 		7F0750FE1F21080A00C3731F /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,12 @@
 		7F78BFE61F21077F00BA64C0 /* Dear WatsonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dear WatsonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F78BFEA1F21077F00BA64C0 /* Dear_WatsonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dear_WatsonUITests.swift; sourceTree = "<group>"; };
 		7F78BFEC1F21077F00BA64C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864DE619BDA53C58C1E7780A /* Pods-Dear Watson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear Watson.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson.release.xcconfig"; sourceTree = "<group>"; };
+		9280D8B8CF70FBB02ADFAB31 /* Pods_Dear_WatsonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_WatsonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5F832A27A8575F21C9B3837 /* Pods_Dear_Watson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_Watson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D25DDE9059A3E99FBA40BD35 /* Pods-Dear WatsonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DF39162549A0998CD50C0C87 /* Pods-Dear WatsonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests.release.xcconfig"; sourceTree = "<group>"; };
+		EC24F6CCA9DE4C6156CDAB74 /* Pods-Dear WatsonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13FD3FFB5BDE742294178B75 /* Pods_Dear_Watson.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD657A5345BB45A90FEB3C8 /* Pods_Dear_WatsonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E74A06C0CB50D5873098BB7 /* Pods_Dear_WatsonUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2615254B895DB5B2848F7EC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34829CA86F658B1CB84A3464 /* Pods-Dear Watson.debug.xcconfig */,
+				864DE619BDA53C58C1E7780A /* Pods-Dear Watson.release.xcconfig */,
+				0D06661A2D5D0D90BD6DAB38 /* Pods-Dear WatsonTests.debug.xcconfig */,
+				DF39162549A0998CD50C0C87 /* Pods-Dear WatsonTests.release.xcconfig */,
+				EC24F6CCA9DE4C6156CDAB74 /* Pods-Dear WatsonUITests.debug.xcconfig */,
+				D25DDE9059A3E99FBA40BD35 /* Pods-Dear WatsonUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7F78BFBB1F21077F00BA64C0 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +123,8 @@
 				7F78BFDE1F21077F00BA64C0 /* Dear WatsonTests */,
 				7F78BFE91F21077F00BA64C0 /* Dear WatsonUITests */,
 				7F78BFC51F21077F00BA64C0 /* Products */,
+				2615254B895DB5B2848F7EC8 /* Pods */,
+				E478206A2A6427900282B188 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +176,16 @@
 			path = "Dear WatsonUITests";
 			sourceTree = "<group>";
 		};
+		E478206A2A6427900282B188 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5F832A27A8575F21C9B3837 /* Pods_Dear_Watson.framework */,
+				9280D8B8CF70FBB02ADFAB31 /* Pods_Dear_WatsonTests.framework */,
+				266898CAF6FBB31FCE81F9AD /* Pods_Dear_WatsonUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F78BFEF1F21077F00BA64C0 /* Build configuration list for PBXNativeTarget "Dear Watson" */;
 			buildPhases = (
+				D1EC0E1010A7207E18A11A4A /* [CP] Check Pods Manifest.lock */,
 				7F78BFC01F21077F00BA64C0 /* Sources */,
 				7F78BFC11F21077F00BA64C0 /* Frameworks */,
 				7F78BFC21F21077F00BA64C0 /* Resources */,
+				87B66265FAA46138395ADE0B /* [CP] Embed Pods Frameworks */,
+				F0E06C4F9997FB4729051332 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F78BFF21F21077F00BA64C0 /* Build configuration list for PBXNativeTarget "Dear WatsonTests" */;
 			buildPhases = (
+				455A6F57A7DB80719CDA6119 /* [CP] Check Pods Manifest.lock */,
 				7F78BFD71F21077F00BA64C0 /* Sources */,
 				7F78BFD81F21077F00BA64C0 /* Frameworks */,
 				7F78BFD91F21077F00BA64C0 /* Resources */,
+				95EC905693D17B97388F60D7 /* [CP] Embed Pods Frameworks */,
+				63FC24F644F9EF92F372A427 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,9 +234,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F78BFF51F21077F00BA64C0 /* Build configuration list for PBXNativeTarget "Dear WatsonUITests" */;
 			buildPhases = (
+				B6D631B921459151860D69C5 /* [CP] Check Pods Manifest.lock */,
 				7F78BFE21F21077F00BA64C0 /* Sources */,
 				7F78BFE31F21077F00BA64C0 /* Frameworks */,
 				7F78BFE41F21077F00BA64C0 /* Resources */,
+				FE8B4B1573F0A7C4A03E03C3 /* [CP] Embed Pods Frameworks */,
+				2E9DF7D9086FBD63D50B966D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +324,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E9DF7D9086FBD63D50B966D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		455A6F57A7DB80719CDA6119 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63FC24F644F9EF92F372A427 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87B66265FAA46138395ADE0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95EC905693D17B97388F60D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6D631B921459151860D69C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D1EC0E1010A7207E18A11A4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0E06C4F9997FB4729051332 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE8B4B1573F0A7C4A03E03C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F78BFC01F21077F00BA64C0 /* Sources */ = {
@@ -441,6 +628,7 @@
 		};
 		7F78BFF01F21077F00BA64C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34829CA86F658B1CB84A3464 /* Pods-Dear Watson.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
@@ -454,6 +642,7 @@
 		};
 		7F78BFF11F21077F00BA64C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 864DE619BDA53C58C1E7780A /* Pods-Dear Watson.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
@@ -467,6 +656,7 @@
 		};
 		7F78BFF31F21077F00BA64C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D06661A2D5D0D90BD6DAB38 /* Pods-Dear WatsonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -481,6 +671,7 @@
 		};
 		7F78BFF41F21077F00BA64C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF39162549A0998CD50C0C87 /* Pods-Dear WatsonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -495,6 +686,7 @@
 		};
 		7F78BFF61F21077F00BA64C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC24F6CCA9DE4C6156CDAB74 /* Pods-Dear WatsonUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Dear WatsonUITests/Info.plist";
@@ -508,6 +700,7 @@
 		};
 		7F78BFF71F21077F00BA64C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D25DDE9059A3E99FBA40BD35 /* Pods-Dear WatsonUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Dear WatsonUITests/Info.plist";

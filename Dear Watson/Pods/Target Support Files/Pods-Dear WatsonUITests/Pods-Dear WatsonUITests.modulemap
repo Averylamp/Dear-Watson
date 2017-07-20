@@ -1,0 +1,6 @@
+framework module Pods_Dear_WatsonUITests {
+  umbrella header "Pods-Dear WatsonUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
