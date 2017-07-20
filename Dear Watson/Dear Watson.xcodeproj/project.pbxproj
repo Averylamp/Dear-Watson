@@ -24,6 +24,7 @@
 		7F78BFD51F21077F00BA64C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F78BFD31F21077F00BA64C0 /* LaunchScreen.storyboard */; };
 		7F78BFE01F21077F00BA64C0 /* Dear_WatsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F78BFDF1F21077F00BA64C0 /* Dear_WatsonTests.swift */; };
 		7F78BFEB1F21077F00BA64C0 /* Dear_WatsonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F78BFEA1F21077F00BA64C0 /* Dear_WatsonUITests.swift */; };
+		BB4460221F21352C0018542A /* PhraseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4460211F21352C0018542A /* PhraseGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7F78BFEC1F21077F00BA64C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864DE619BDA53C58C1E7780A /* Pods-Dear Watson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear Watson.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson.release.xcconfig"; sourceTree = "<group>"; };
 		9280D8B8CF70FBB02ADFAB31 /* Pods_Dear_WatsonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_WatsonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB4460211F21352C0018542A /* PhraseGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseGenerator.swift; sourceTree = "<group>"; };
 		C5F832A27A8575F21C9B3837 /* Pods_Dear_Watson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_Watson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25DDE9059A3E99FBA40BD35 /* Pods-Dear WatsonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF39162549A0998CD50C0C87 /* Pods-Dear WatsonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		7F78BFC61F21077F00BA64C0 /* Dear Watson */ = {
 			isa = PBXGroup;
 			children = (
+				BB4460211F21352C0018542A /* PhraseGenerator.swift */,
 				7F78BFC71F21077F00BA64C0 /* AppDelegate.swift */,
 				7F78BFCB1F21077F00BA64C0 /* Main.storyboard */,
 				7F1F10C91F210A1300580ED8 /* JournalEntryTableViewCell.swift */,
@@ -353,7 +356,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		63FC24F644F9EF92F372A427 /* [CP] Copy Pods Resources */ = {
@@ -413,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D1EC0E1010A7207E18A11A4A /* [CP] Check Pods Manifest.lock */ = {
@@ -428,7 +431,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F0E06C4F9997FB4729051332 /* [CP] Copy Pods Resources */ = {
@@ -472,6 +475,7 @@
 				7F1F10CA1F210A1300580ED8 /* JournalEntryTableViewCell.swift in Sources */,
 				7F1F10C41F2108E100580ED8 /* JournalListViewController.swift in Sources */,
 				7F0750FF1F21080A00C3731F /* AppleSpeechController.swift in Sources */,
+				BB4460221F21352C0018542A /* PhraseGenerator.swift in Sources */,
 				7F78BFD01F21077F00BA64C0 /* Dear_Watson.xcdatamodeld in Sources */,
 				7F1F10C81F2108EE00580ED8 /* PersonInformationViewController.swift in Sources */,
 				7F78BFC81F21077F00BA64C0 /* AppDelegate.swift in Sources */,

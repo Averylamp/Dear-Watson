@@ -52,6 +52,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtS-xv-vhQ">
                                 <rect key="frame" x="26" y="31.5" width="30" height="30"/>
                                 <state key="normal" title="Info"/>
+                                <connections>
+                                    <action selector="infoButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="66a-rd-tRw"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Nc-NO-hAp">
                                 <rect key="frame" x="0.0" y="73" width="375" height="594"/>
@@ -247,7 +250,7 @@
         <!--Person Information View Controller-->
         <scene sceneID="87J-53-Wt7">
             <objects>
-                <viewController id="i47-tz-d7g" customClass="PersonInformationViewController" customModule="Dear_Watson" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonInfoVC" id="i47-tz-d7g" customClass="PersonInformationViewController" customModule="Dear_Watson" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9eI-Rs-qVv"/>
                         <viewControllerLayoutGuide type="bottom" id="LOA-ua-7xk"/>

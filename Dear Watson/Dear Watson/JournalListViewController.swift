@@ -27,6 +27,16 @@ class JournalListViewController: UIViewController {
         }
         
     }
+    
+    
+    @IBAction func infoButtonClicked(_ sender: Any) {
+        
+        let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonInfoVC")
+            self.navigationController?.pushViewController(infoVC, animated: true)
+    
+    }
+    
+    
 }
 
 extension JournalListViewController: UITableViewDataSource, UITableViewDelegate {

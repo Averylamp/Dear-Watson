@@ -7,6 +7,7 @@ target 'Dear Watson' do
 
   # Pods for Dear Watson
   pod 'LTMorphingLabel'
+  pod 'Charts', '~> 3.0.1'
 
   target 'Dear WatsonTests' do
     inherit! :search_paths
