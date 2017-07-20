@@ -9,7 +9,8 @@
 import Foundation
 
 class PhraseGeneration {
-    
+    static let sharedInstance = PhraseGeneration()
+
     let GREETING = [
         "How are you today?",
         "Hi, how are you doing today?",

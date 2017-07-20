@@ -190,6 +190,9 @@
                                     <constraint firstAttribute="width" constant="90" id="ivP-5w-nZg"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="MicButton"/>
+                                <connections>
+                                    <action selector="recordButtonClicked:" destination="JOJ-1e-aMf" eventType="touchUpInside" id="UfT-ZG-LyV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-Hc-7Yz">
                                 <rect key="frame" x="10" y="19" width="35" height="35"/>

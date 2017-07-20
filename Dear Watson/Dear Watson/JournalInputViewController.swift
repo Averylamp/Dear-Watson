@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import LTMorphingLabel
 
+let journalEntryKey = "JournalEntryKey"
 let joyfulFace = "😀"
 let sadFace = "😢"
 let disgustedFace = "🙄"
@@ -46,7 +47,8 @@ class JournalInputViewController: UIViewController {
         questionLabel.morphingCharacterDelay = 0.05
         
         self.delay(delay: 1.0) {
-            self.askQuestion(question: "Hello, how are you doing today?")
+            let question = PhraseGeneration.sharedInstance.getGreeting()
+            self.askQuestion(question: question)
         }
         
         // Do any additional setup after loading the view.
@@ -55,9 +57,33 @@ class JournalInputViewController: UIViewController {
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func saveInformation(){
+        let defaults = UserDefaults.standard
+        var fullAllEntries = [[String:Any]]()
+        if let allEntries = defaults.array(forKey: journalEntryKey), let formattedAllEntries = allEntries as? [[String:Any]] {
+            fullAllEntries = formattedAllEntries
+        }
+        var journalEntry = [String:Any]()
+        journalEntry["journalTitle"] = "Journal Entry 1"
+        journalEntry["date"] = Date()
+        journalEntry["fullText"] = self.responseTextView.text
+        journalEntry["keywords"] = []
+        journalEntry["emotions"] = []
+        
+        
+        fullAllEntries.append(journalEntry)
+        defaults.set(fullAllEntries, forKey: journalEntryKey)
+    }
+
+    
+    
     @IBAction func nextQuestionClicked(_ sender: Any) {
-        self.responseTextView.text = self.responseTextView.text + "\n\n"
         self.askQuestion(question: "Cool.  Anything else new today?")
+        self.delay(delay: 0.3) {
+            self.responseTextView.text = self.responseTextView.text + "\n\n"
+            self.fullText = self.responseTextView.text
+        }
     }
     
     @IBAction func recordButtonClicked(_ sender: Any) {
@@ -65,13 +91,10 @@ class JournalInputViewController: UIViewController {
     }
     
     func askQuestion(question:String){
-        self.responseTextView.text = self.fullText + self.temporaryText
-        self.fullText = self.responseTextView.text
-        self.temporaryText = ""
         self.stopAppleSTT()
         speakResponse(text: question)
         questionLabel.text = question
-        delay(delay: 3.0) {
+        delay(delay: 1.0) {
             self.startAppleSTT()
         }
     }
@@ -121,9 +144,14 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
     }
     
     func finalAppleRecognitionRecieved(phrase: String) {
-        fullText = fullText + phrase + ".  "
         temporaryText = ""
-        self.responseTextView.text = fullText
+        self.responseTextView.text = fullText + phrase + ".  "
+        fullText = self.responseTextView.text
+        DispatchQueue.main.async {
+            UIView.transition(with: self.recordButton, duration: self.buttonTransitionAnimationTime,options: .transitionCrossDissolve,animations: {
+                self.recordButton.setImage(#imageLiteral(resourceName: "MicButton"), for: .normal)
+            },completion: nil)
+        }
     }
     
     func partialAppleRecognitionRecieved(phrase: String) {
@@ -134,7 +162,6 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
     func errorAppleRecieved(error: String) {
         print("ERROR RECORDING \(error)")
     }
-    
     
     
 }
