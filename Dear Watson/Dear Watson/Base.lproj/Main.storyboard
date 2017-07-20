@@ -177,7 +177,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How is your day today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lF7-zq-aXb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How is your day today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lF7-zq-aXb" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                 <rect key="frame" x="-0.5" y="415" width="375" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -241,6 +241,7 @@
                         <outlet property="faceLabel" destination="SEs-TU-DJo" id="7jF-md-K8h"/>
                         <outlet property="questionLabel" destination="lF7-zq-aXb" id="cmo-Av-ThU"/>
                         <outlet property="recordButton" destination="eNz-dv-D30" id="UlU-qY-lCz"/>
+                        <outlet property="responseTextView" destination="l5U-JG-Ju4" id="Hhf-3n-4Ez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkH-85-fAo" userLabel="First Responder" sceneMemberID="firstResponder"/>

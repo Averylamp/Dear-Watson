@@ -8,6 +8,9 @@ target 'Dear Watson' do
   # Pods for Dear Watson
   pod 'LTMorphingLabel'
   pod 'Charts', '~> 3.0.1'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+
 
   target 'Dear WatsonTests' do
     inherit! :search_paths

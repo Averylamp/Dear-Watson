@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import LTMorphingLabel
 
 let joyfulFace = "😀"
 let sadFace = "😢"
@@ -21,24 +22,32 @@ class JournalInputViewController: UIViewController {
     
     var synth = AVSpeechSynthesizer()
     
+    @IBOutlet weak var responseTextView: UITextView!
     var appleSpeechAnalyzer =  AppleSpeechController()
     var speechActive = false
     
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionLabel: LTMorphingLabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var faceLabel: UILabel!
     
     //sadness, joy,fear, anger, disgust
+    
+    var temporaryText = ""
+    var fullText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         appleSpeechAnalyzer = AppleSpeechController()
         appleSpeechAnalyzer.delegate = self
         appleSpeechAnalyzer.setupRecognizer()
+        questionLabel.text = ""
+        questionLabel.morphingEffect = .fall
+        questionLabel.morphingDuration = 2.0
+        questionLabel.morphingCharacterDelay = 0.05
         
-        faceLabel.growAndShrink(duration: 5.0, times: 10)
-        faceLabel.shake(duration: 5.0)
-        faceLabel.rotate(duration: 5.0, times: 10)
+        self.delay(delay: 1.0) {
+            self.askQuestion(question: "Hello, how are you doing today?")
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -47,15 +56,24 @@ class JournalInputViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func nextQuestionClicked(_ sender: Any) {
-        
+        self.responseTextView.text = self.responseTextView.text + "\n\n"
+        self.askQuestion(question: "Cool.  Anything else new today?")
+    }
+    
+    @IBAction func recordButtonClicked(_ sender: Any) {
+        self.toggleAppleSTT()
     }
     
     func askQuestion(question:String){
+        self.responseTextView.text = self.fullText + self.temporaryText
+        self.fullText = self.responseTextView.text
+        self.temporaryText = ""
+        self.stopAppleSTT()
         speakResponse(text: question)
         questionLabel.text = question
-        
-        
-        
+        delay(delay: 3.0) {
+            self.startAppleSTT()
+        }
     }
     
     let buttonTransitionAnimationTime = 0.5
@@ -65,6 +83,9 @@ class JournalInputViewController: UIViewController {
         utterance.rate = 0.5
         utterance.volume = 1.0
         self.synth.speak(utterance)
+        faceLabel.growAndShrink(duration: 3.0, times: 6)
+        faceLabel.shake(duration: 3.0)
+        faceLabel.rotate(duration: 3.0, times: 10)
     }
 }
 
@@ -100,11 +121,14 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
     }
     
     func finalAppleRecognitionRecieved(phrase: String) {
-    
+        fullText = fullText + phrase + ".  "
+        temporaryText = ""
+        self.responseTextView.text = fullText
     }
     
     func partialAppleRecognitionRecieved(phrase: String) {
-        
+        temporaryText = phrase
+        self.responseTextView.text = fullText + temporaryText
     }
     
     func errorAppleRecieved(error: String) {
