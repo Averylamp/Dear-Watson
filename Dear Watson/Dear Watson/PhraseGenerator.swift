@@ -14,7 +14,8 @@ class PhraseGeneration {
     let GREETING = [
         "How are you today?",
         "Hi, how are you doing today?",
-        "What's up?"
+        "What's up?",
+        "How's life?"
     ]
     
     let FOLLOWUP = [
@@ -34,7 +35,8 @@ class PhraseGeneration {
     ]
     
     let DISGUSTED_RESPONSE = [
-        "Oh, gross. Sorry to hear that."
+        "Oh, gross. Sorry to hear that. I hope something nicer happened today?",
+        "That stinks. Really sorry to hear that. Did anything nicer happen today?"
     ]
     
     let FEAR_RESPONSE = [
@@ -42,6 +44,7 @@ class PhraseGeneration {
     ]
     
     let ANGRY_RESPONSE = [
+        "Wow, I'm sorry to hear that. Want to vent to me about it?",
         "That really sucks. Want to tell me more about it?"
     ]
     
