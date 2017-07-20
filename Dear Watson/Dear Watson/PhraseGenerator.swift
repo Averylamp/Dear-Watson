@@ -23,8 +23,8 @@ class PhraseGeneration {
     
     let HAPPY_RESPONSE = [
         "That sounds great! Is there anything else you want to tell me about?",
-        "Awesome! Anything else cool happen?",
-        "Cool!"
+        "Awesome! Anything else cool happen today?",
+        "Cool! Anything else new today?"
     ]
     
     let SAD_RESPONSE = [
