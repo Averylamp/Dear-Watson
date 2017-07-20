@@ -1,6 +1,6 @@
 var request = require("sync-request");
 
-// TODO: params = {...?}
+// params = {"text": "..."}
 exports.main = function(params) {
     var url = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19";
 
@@ -13,7 +13,7 @@ exports.main = function(params) {
 
     var options = {
         headers: headers,
-        json: { "text": "I've been having a tough day today. Life is just so boring."}
+        json: { "text": params.text}
     }
 
     var res = request("POST", url, options);
