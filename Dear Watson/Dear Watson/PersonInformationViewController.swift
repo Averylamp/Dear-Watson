@@ -22,9 +22,10 @@ class PersonInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        titleLabel.frame = CGRect(x: 20, y: 0, width: self.view.frame.width, height: 100)
+        // TODO: put in storyboard
+        titleLabel.frame = CGRect(x: 20, y: 10, width: self.view.frame.width, height: 90)
         titleLabel.text = "Historical Data"
+        titleLabel.font = titleLabel.font.withSize(self.view.frame.width * 0.1)
         self.view.addSubview(titleLabel)
         
         
@@ -33,14 +34,33 @@ class PersonInformationViewController: UIViewController {
         self.view.addSubview(self.scrollView)
         
         
+        let graphWidth = self.view.frame.width * 0.9
+        let graphHeight = self.view.frame.height * 0.4
+        
+        let x = self.view.frame.width * 0.05
+        var y = CGFloat(10)
+        
+        let titleHeight = self.view.frame.width * 0.2
+        let titleWidth = self.view.frame.width * 0.2
+        
+        let margin = CGFloat(20)
+        
         // Happy
-        self.addChart(titleFrame: CGRect(x: 0, y: 10, width: self.view.frame.width, height: 10), chartFrame: CGRect(x: 0, y: 20, width: self.view.frame.width, height: 200), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😁", color: UIColor.magenta)
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😁", color: UIColor.magenta)
+        
+        y = y + titleHeight + graphHeight + margin
         
         // Sad
-        self.addChart(titleFrame: CGRect(x: 10, y: 310, width: self.view.frame.width, height: 10), chartFrame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 200), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.blue)
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.blue)
+        
+        y = y + titleHeight + graphHeight + margin
         
         // Anger
-        self.addChart(titleFrame: CGRect(x: 10, y: 610, width: self.view.frame.width, height: 10), chartFrame: CGRect(x: 0, y: 600, width: self.view.frame.width, height: 200), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😡", color: UIColor.red)
+        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😡", color: UIColor.red)
+        
+        y = y + titleHeight + graphHeight + margin
+        
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: y+50)
         
     }
     
@@ -48,7 +68,7 @@ class PersonInformationViewController: UIViewController {
         
         let title = UILabel(frame: titleFrame)
         title.text = chartTitle
-        title.font = title.font.withSize(20)
+        title.font = title.font.withSize(self.view.frame.width * 0.1)
         self.scrollView.addSubview(title)
         
         
