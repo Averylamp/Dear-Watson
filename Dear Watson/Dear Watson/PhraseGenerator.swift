@@ -12,15 +12,16 @@ class PhraseGeneration {
     static let sharedInstance = PhraseGeneration()
 
     let GREETING = [
-        "How are you today?",
-        "Hi, how are you doing today?",
-        "What's up?",
-        "How's life?"
+        "How are you today?  Did you do anything interesting?",
+        "Hi, how are you doing today?  What did you do?",
+        "What's up?  Did you do anything cool today?",
+        "How's life?  Anything happen today?"
     ]
     
     let FOLLOWUP = [
-        "What did you do today?",
-        "Did you do anything interesting today?"
+        "What else did you do today? Did you want to elaborate?",
+        "Did you do anything else today?  Meet anyone?",
+        "Did you meet anyone today as well or hang out with anyone?"
     ]
     
     let HAPPY_RESPONSE = [

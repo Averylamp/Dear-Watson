@@ -28,7 +28,7 @@ class InfoViewController: UIViewController {
         backgroundImage.frame.origin.x = 0
         setupTitles()
         
-        EmotionAnalyzer.sharedInstance.keywordsFrom(text: "Dear Watson is your very own personal journal taking solution.  With each journal entry, Watson analyzes it in order to give you information about yourself, your emotions, and the highlights of your day. ", numberOfKeywords: 5) { (response) in
+        EmotionAnalyzer.sharedInstance.keywordsFrom(text: "Dear Watson is your very own personal journal taking solution.  With each journal entry, Watson analyzes it in order to give you information about yourself, your emotions, and the highlights of your day. ") { (response) in
             print(response)
         }
         // Do any additional setup after loading the view.
