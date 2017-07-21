@@ -20,22 +20,22 @@ let angryFace = "😡"
 let smileyFace = "😁"
 
 class JournalInputViewController: UIViewController {
-    
+
     var synth = AVSpeechSynthesizer()
-    
+
     @IBOutlet weak var responseTextView: UITextView!
     var appleSpeechAnalyzer =  AppleSpeechController()
     var speechActive = false
-    
+
     @IBOutlet weak var questionLabel: LTMorphingLabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var faceLabel: UILabel!
-    
+
     //sadness, joy,fear, anger, disgust
-    
+
     var temporaryText = ""
     var fullText = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         appleSpeechAnalyzer = AppleSpeechController()
@@ -45,20 +45,40 @@ class JournalInputViewController: UIViewController {
         questionLabel.morphingEffect = .fall
         questionLabel.morphingDuration = 2.0
         questionLabel.morphingCharacterDelay = 0.05
-        
+
 
         self.delay(delay: 1.0) {
             let question = PhraseGeneration.sharedInstance.getGreeting()
             self.askQuestion(question: question)
         }
-        
+
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    let mockEntries = [
+      "Today I went on a walk with my dog and I saw ducklings! They were really cute and
+      my dog was really excited. But later on I walked near some goslings and a goose attacked me.
+      My dog protected me though. Overall a pretty good day though. The goslings were pretty cute. Also my dog
+      popped a animal balloon and some kid cried but it was kind of funny.",
+      "Today at work we had a hackathon! Xcode didn't download for like forever. While we were waiting we watched Up.
+      I cried when the wife died. I cried when all the balloons started crying but I also started happy crying when the
+      balloons lifted his house into Paradise Falls. ",
+      "Today a lot of people entered our hackathon room. It was kind of annoying. Grace tried to write on the wall but she
+      did it on the wrong side so she had to write backwards and it was cool. I got a Starbucks and I was disappointed at the size
+      to price ratio. Also some guy spilled yogurt on the ground. It was pretty gross. Also some random dude was carrying happy birthday
+      balloons in the Starbucks. They were really big.",
+      "Today I learned how to make a balloon animal. I made a snake! I heard on the news that some rude guy was going around the neighborhood
+      dropping sausages with razors inside. I can't let my dog eat food off the ground now. I was pretty angry to hear that and I hope the dude
+      gets caught and sentenced to a million years in prison. ",
+      "",
+      "",
+      "",
+      "",
+
+    ]
     func saveInformation(){
         let defaults = UserDefaults.standard
         var fullAllEntries = [[String:Any]]()
@@ -71,14 +91,14 @@ class JournalInputViewController: UIViewController {
         journalEntry["fullText"] = self.responseTextView.text
         journalEntry["keywords"] = []
         journalEntry["emotions"] = []
-        
-        
+
+
         fullAllEntries.append(journalEntry)
         defaults.set(fullAllEntries, forKey: journalEntryKey)
     }
 
-    
-    
+
+
     @IBAction func nextQuestionClicked(_ sender: Any) {
         self.askQuestion(question: "Cool.  Anything else new today?")
         self.delay(delay: 0.3) {
@@ -86,11 +106,11 @@ class JournalInputViewController: UIViewController {
             self.fullText = self.responseTextView.text
         }
     }
-    
+
     @IBAction func recordButtonClicked(_ sender: Any) {
         self.toggleAppleSTT()
     }
-    
+
     func askQuestion(question:String){
         self.stopAppleSTT()
         speakResponse(text: question)
@@ -99,7 +119,7 @@ class JournalInputViewController: UIViewController {
             self.startAppleSTT()
         }
     }
-    
+
     let buttonTransitionAnimationTime = 0.5
     func speakResponse(text:String){
         let utterance = AVSpeechUtterance(string: text)
@@ -114,7 +134,7 @@ class JournalInputViewController: UIViewController {
 }
 
 extension JournalInputViewController: AppleSpeechFeedbackProtocall{
-    
+
     func toggleAppleSTT(){
         if appleSpeechAnalyzer.isRecording(){
             stopAppleSTT()
@@ -122,7 +142,7 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
             startAppleSTT()
         }
     }
-    
+
 
     func stopAppleSTT(){
         if appleSpeechAnalyzer.isRecording(){
@@ -133,7 +153,7 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
             speechActive = false
         }
     }
-    
+
     func startAppleSTT(){
         if appleSpeechAnalyzer.isRecording() == false{
             appleSpeechAnalyzer.recordButtonTapped()
@@ -143,7 +163,7 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
             speechActive = true
         }
     }
-    
+
     func finalAppleRecognitionRecieved(phrase: String) {
         temporaryText = ""
         self.responseTextView.text = fullText + phrase + ".  "
@@ -154,17 +174,17 @@ extension JournalInputViewController: AppleSpeechFeedbackProtocall{
             },completion: nil)
         }
     }
-    
+
     func partialAppleRecognitionRecieved(phrase: String) {
         temporaryText = phrase
         self.responseTextView.text = fullText + temporaryText
     }
-    
+
     func errorAppleRecieved(error: String) {
         print("ERROR RECORDING \(error)")
     }
-    
-    
+
+
 }
 
 
@@ -174,10 +194,10 @@ extension UIView {
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         animation.duration = duration
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
-        
+
         layer.add(animation, forKey: "shake")
     }
-    
+
     func growAndShrink(duration: Double, times: Int) {
         let xAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
         xAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
@@ -195,9 +215,9 @@ extension UIView {
         yAnimation.duration = duration
         yAnimation.values = values
         layer.add(yAnimation, forKey: "scale_y")
-        
+
     }
-    
+
     func rotate(duration:Double, times: Int){
         let rotationAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.duration = duration
