@@ -81,6 +81,7 @@ class JournalListViewController: UIViewController {
             infoVC.fearData = fearData
             infoVC.disgustedData = disgustData
             infoVC.angerData = angerData
+            infoVC.initializeCharts()
             self.navigationController?.pushViewController(infoVC, animated: true)
             
         }
@@ -118,5 +119,20 @@ extension JournalListViewController: UITableViewDataSource, UITableViewDelegate 
         else{
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = journalEntries[indexPath.row]
+        if let singleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SingleEntryVC") as? SingleEntryViewController {
+            singleVC.view.frame = self.view.frame
+            singleVC.titleLabel.text = data[journalEntryKeys.journalTitleKey] as? String
+            singleVC.setEmotionsLabel(emotions: (data[journalEntryKeys.emotionKey] as? [[Any]])! )
+            singleVC.fullTextLabel.text = data[journalEntryKeys.fullTextKey] as? String
+            singleVC.titleLabel.text = data[journalEntryKeys.journalTitleKey] as? String
+            self.navigationController?.pushViewController(singleVC, animated: true)
+            
+        }
+        
+        
     }
 }
