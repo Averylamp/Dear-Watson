@@ -323,4 +323,30 @@ extension UIView {
         rotationAnimation.values = values
         layer.add(rotationAnimation, forKey: "rotate")
     }
+
+    func bounce(duration: Double, times: Int) {
+        let yAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        yAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        yAnimation.duration = duration
+        var values: [Double] = [Double]()
+        for i in 0..<times{
+            values.append(10)
+            values.append(-10)
+        }
+        yAnimation.values = values
+        layer.add(yAnimation, forKey: "bounce")
+    }
+
+    func spin(duration:Double, times:Int){
+        let yAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.x")
+        yAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        yAnimation.duration = duration
+        var values: [Double] = [Double]()
+        for i in 0..<times{
+            values.append(10)
+           values.append(-2)
+        }
+        yAnimation.values = values
+        layer.add(yAnimation, forKey: "rotate_x")
+    }
 }
