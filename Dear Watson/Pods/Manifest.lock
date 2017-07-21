@@ -1,17 +1,23 @@
 PODS:
+  - Alamofire (4.5.0)
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
   - LTMorphingLabel (0.4.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - Alamofire
   - Charts (~> 3.0.1)
   - LTMorphingLabel
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   LTMorphingLabel: d9a85f16ac306f0e07321d6819964deb2dc69638
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 6d4a869c5ef19c89174a1bef7eb9199ad12ff3c7
+PODFILE CHECKSUM: 217d8f87dcfc012b983077006a4b7ad9d9224020
 
 COCOAPODS: 1.2.0

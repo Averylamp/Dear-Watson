@@ -19,6 +19,7 @@ open class LineChartView: BarLineChartViewBase, LineChartDataProvider
     {
         super.initialize()
         
+        
         renderer = LineChartRenderer(dataProvider: self, animator: _animator, viewPortHandler: _viewPortHandler)
     }
     
