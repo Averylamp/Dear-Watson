@@ -12,4 +12,4 @@ Press the red button to start recording your journal entry. Dear Watson transcri
 ### See Highlights of Your Day 
 ![](readme_images/highlights.png)
 
-You can view your past entries 
+You can view any of your previous entries to refresh your memory of the events that day and how you felt. Additionally, you can see a graph of your emotions over time.
