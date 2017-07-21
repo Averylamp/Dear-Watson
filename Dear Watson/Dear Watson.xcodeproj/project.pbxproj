@@ -25,6 +25,7 @@
 		7F78BFE01F21077F00BA64C0 /* Dear_WatsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F78BFDF1F21077F00BA64C0 /* Dear_WatsonTests.swift */; };
 		7F78BFEB1F21077F00BA64C0 /* Dear_WatsonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F78BFEA1F21077F00BA64C0 /* Dear_WatsonUITests.swift */; };
 		BB4460221F21352C0018542A /* PhraseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4460211F21352C0018542A /* PhraseGenerator.swift */; };
+		BBBEA7321F21A2F4004F37F3 /* EmotionAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBEA7311F21A2E4004F37F3 /* EmotionAnalyzer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		864DE619BDA53C58C1E7780A /* Pods-Dear Watson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear Watson.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear Watson/Pods-Dear Watson.release.xcconfig"; sourceTree = "<group>"; };
 		9280D8B8CF70FBB02ADFAB31 /* Pods_Dear_WatsonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_WatsonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4460211F21352C0018542A /* PhraseGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseGenerator.swift; sourceTree = "<group>"; };
+		BBBEA7311F21A2E4004F37F3 /* EmotionAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnalyzer.swift; sourceTree = "<group>"; };
 		C5F832A27A8575F21C9B3837 /* Pods_Dear_Watson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dear_Watson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25DDE9059A3E99FBA40BD35 /* Pods-Dear WatsonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonUITests/Pods-Dear WatsonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF39162549A0998CD50C0C87 /* Pods-Dear WatsonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dear WatsonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dear WatsonTests/Pods-Dear WatsonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				7F1F10C51F2108E600580ED8 /* JournalInputViewController.swift */,
 				7F1F10C71F2108EE00580ED8 /* PersonInformationViewController.swift */,
 				7F0750FC1F21080A00C3731F /* AppleSpeechController.swift */,
+				BBBEA7311F21A2E4004F37F3 /* EmotionAnalyzer.swift */,
 				7F0750FD1F21080A00C3731F /* ColorSchemer.swift */,
 				7F0750FE1F21080A00C3731F /* InfoViewController.swift */,
 				7F78BFD11F21077F00BA64C0 /* Assets.xcassets */,
@@ -471,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBBEA7321F21A2F4004F37F3 /* EmotionAnalyzer.swift in Sources */,
 				7F1F10C61F2108E600580ED8 /* JournalInputViewController.swift in Sources */,
 				7F1F10CA1F210A1300580ED8 /* JournalEntryTableViewCell.swift in Sources */,
 				7F1F10C41F2108E100580ED8 /* JournalListViewController.swift in Sources */,
