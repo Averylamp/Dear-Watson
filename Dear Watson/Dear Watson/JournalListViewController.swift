@@ -9,7 +9,7 @@
 import UIKit
 
 class JournalListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var journalEntries = [[String: Any]] ()
@@ -47,15 +47,44 @@ class JournalListViewController: UIViewController {
     
     @IBAction func infoButtonClicked(_ sender: Any) {
         
-        let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonInfoVC")
-            self.navigationController?.pushViewController(infoVC, animated: true)
-        
-        for journalEntry in journalEntries{
-            if let emotion = journalEntry[journalEntryKeys.emotionKey] as? [[Any]] {
-                print(emotion)
+        if let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonInfoVC") as? PersonInformationViewController{
+            var joyData = [Double]()
+            var fearData = [Double]()
+            var disgustData = [Double]()
+            var angerData = [Double]()
+            var sadData = [Double]()
+            for journalEntry in journalEntries{
+                if let emotion = journalEntry[journalEntryKeys.emotionKey] as? [[Any]] {
+                    print(emotion)
+                    for item in emotion{
+                        if let itemKey = item[0] as? String, let itemValue = item[1] as? Double{
+                            switch itemKey {
+                            case Emotions.Joy.emotionToString():
+                                joyData.append(itemValue)
+                            case Emotions.Fear.emotionToString():
+                                fearData.append(itemValue)
+                            case Emotions.Anger.emotionToString():
+                                angerData.append(itemValue)
+                            case Emotions.Disgust.emotionToString():
+                                disgustData.append(itemValue)
+                            case Emotions.Sadness.emotionToString():
+                                sadData.append(itemValue)
+                            default:
+                                joyData.append(itemValue)
+                            }
+                        }
+                    }
+                }
             }
+            infoVC.sadData = sadData
+            infoVC.joyfulData = joyData
+            infoVC.fearData = fearData
+            infoVC.disgustedData = disgustData
+            infoVC.angerData = angerData
+            self.navigationController?.pushViewController(infoVC, animated: true)
+            
         }
-    
+        
     }
     
     
@@ -84,7 +113,7 @@ extension JournalListViewController: UITableViewDataSource, UITableViewDelegate 
             if let emotions = journalEntryData[journalEntryKeys.emotionKey] as? [[Any]]{
                 journalEntryCell.setEmotionsLabel(emotions: emotions)
             }
-         return journalEntryCell
+            return journalEntryCell
         }
         else{
             return UITableViewCell()

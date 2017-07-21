@@ -80,13 +80,27 @@ class JournalInputViewController: UIViewController {
     }
     
     func saveInformation(){
+        self.stopAppleSTT()
         let defaults = UserDefaults.standard
         var fullAllEntries = [[String:Any]]()
         if let allEntries = defaults.array(forKey: journalEntryKeys.journalStoreKey), let formattedAllEntries = allEntries as? [[String:Any]] {
             fullAllEntries = formattedAllEntries
+        }else{
+            
         }
+        createJournalEntry(string: self.responseTextView.text, count: fullAllEntries.count + 1) { (journalEntry) in
+            fullAllEntries.append(journalEntry)
+            print(fullAllEntries)
+            defaults.set(fullAllEntries, forKey: journalEntryKeys.journalStoreKey)
+            self.delay(delay: 0.0, closure: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+    }
+    
+    func createJournalEntry(string: String, count: Int = 1, callback: @escaping ([String:Any])-> Void ){
         var journalEntry = [String:Any]()
-        journalEntry[journalEntryKeys.journalTitleKey] = "Journal Entry \(fullAllEntries.count + 1)"
+        journalEntry[journalEntryKeys.journalTitleKey] = "Journal Entry \(count)"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM H:mm a yyyy"
         journalEntry[journalEntryKeys.dateKey] = dateFormatter.string(from: Date())
@@ -97,11 +111,7 @@ class JournalInputViewController: UIViewController {
             let keywordResponse = EmotionAnalyzer.sharedInstance.processKeywords(result: response)
             journalEntry[journalEntryKeys.keywordsKey] = keywordResponse
             if count == 0{
-                fullAllEntries.append(journalEntry)
-                defaults.set(fullAllEntries, forKey: journalEntryKeys.journalStoreKey)
-                self.delay(delay: 0.0, closure: {
-                    self.navigationController?.popViewController(animated: true)
-                })
+                callback(journalEntry)
             }
         }
         EmotionAnalyzer.sharedInstance.emotionsFrom(text: self.responseTextView.text) { (response) in
@@ -113,16 +123,9 @@ class JournalInputViewController: UIViewController {
             }
             journalEntry[journalEntryKeys.emotionKey] = emotionCoverted
             if count == 0{
-                fullAllEntries.append(journalEntry)
-                print(fullAllEntries)
-                defaults.set(fullAllEntries, forKey: journalEntryKeys.journalStoreKey)
-                self.delay(delay: 0.0, closure: {
-                    self.navigationController?.popViewController(animated: true)
-                })
+                callback(journalEntry)
             }
         }
-        
-        
     }
     
     

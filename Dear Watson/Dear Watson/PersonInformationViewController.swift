@@ -40,6 +40,10 @@ class PersonInformationViewController: UIViewController {
         self.view.addSubview(self.scrollView)
         
         
+        
+    }
+    
+    func initializeCharts(){
         let graphWidth = self.view.frame.width * 0.9
         let graphHeight = self.view.frame.height * 0.4
         
@@ -59,24 +63,23 @@ class PersonInformationViewController: UIViewController {
         
         // Sad
         self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [sadData], chartTitle: [sadFace], colors: [UIColor.blue])
-
-        y = y + titleHeight + graphHeight + margin
-
-        // Disgust
-        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [disgustedData], chartTitle: [disgustedFace], colors: [UIColor.green])
-
-        y = y + titleHeight + graphHeight + margin
-
-        // Fear
-        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [fearData], chartTitle: [fearfulFace], colors: [UIColor.purple])
-
-        y = y + titleHeight + graphHeight + margin
-
-        // Anger
-        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [angerData], chartTitle: [angryFace], colors: [UIColor.red])
-
+        
         y = y + titleHeight + graphHeight + margin
         
+        // Disgust
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [disgustedData], chartTitle: [disgustedFace], colors: [UIColor.green])
+        
+        y = y + titleHeight + graphHeight + margin
+        
+        // Fear
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [fearData], chartTitle: [fearfulFace], colors: [UIColor.purple])
+        
+        y = y + titleHeight + graphHeight + margin
+        
+        // Anger
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [angerData], chartTitle: [angryFace], colors: [UIColor.red])
+        
+        y = y + titleHeight + graphHeight + margin
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: y+50)
         
     }
