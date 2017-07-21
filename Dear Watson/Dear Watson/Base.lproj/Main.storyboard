@@ -262,7 +262,24 @@
                     <view key="view" contentMode="scaleToFill" id="LJQ-jE-S3W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-6k-5qL">
+                                <rect key="frame" x="26" y="30" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="NHw-eh-FyW"/>
+                                    <constraint firstAttribute="width" constant="35" id="vL5-oq-ErK"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icons8-back_filled"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="i47-tz-d7g" eventType="touchUpInside" id="mFH-R1-fVo"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ssy-6k-5qL" firstAttribute="leading" secondItem="LJQ-jE-S3W" secondAttribute="leadingMargin" constant="10" id="8qP-dD-uOH"/>
+                            <constraint firstItem="Ssy-6k-5qL" firstAttribute="top" secondItem="9eI-Rs-qVv" secondAttribute="bottom" constant="10" id="y3l-RA-AXx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oB4-ER-6CD" userLabel="First Responder" sceneMemberID="firstResponder"/>

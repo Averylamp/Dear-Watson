@@ -27,9 +27,8 @@ class InfoViewController: UIViewController {
         backgroundImage.frame = CGRect(x: 0, y: 0, width: self.view.frame.width * 2, height: self.view.frame.height)
         backgroundImage.frame.origin.x = 0
         setupTitles()
-        
-        EmotionAnalyzer.sharedInstance.keywordsFrom(text: "Dear Watson is your very own personal journal taking solution.  With each journal entry, Watson analyzes it in order to give you information about yourself, your emotions, and the highlights of your day. ") { (response) in
-            print(response)
+        EmotionAnalyzer.sharedInstance.keywordsFrom(text: "I'm doing pretty well.  Today I went to Chipotle for dinner and I ate a really tasty burrito bowl.  I also went home and took a nap afterwards which was refreshing.  Before that though, I hung out with a friend and we watched some TV shows. \n\nIt was pretty fun.  I also worked at the office and hung out with some interns.") { (result) in
+            print(EmotionAnalyzer.sharedInstance.processKeywords(result: result))
         }
         // Do any additional setup after loading the view.
     }

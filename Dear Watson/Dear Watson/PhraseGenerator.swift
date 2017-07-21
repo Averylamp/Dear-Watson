@@ -49,6 +49,10 @@ class PhraseGeneration {
         "That really sucks. Want to tell me more about it?"
     ]
     
+    let EMOTIONAL_FOLLOWUP = [
+        "Well thats good to hear.  Tell my any one last thing",
+        "That's great to hear.  Tell my any one last thing",
+    ]
     
     func getGreeting() -> String {
         let randomIndex = Int(arc4random_uniform(UInt32(GREETING.count)))
@@ -92,4 +96,9 @@ class PhraseGeneration {
         return ANGRY_RESPONSE[randomIndex]
     }
     
+    func getEmotionalFollowup() -> String {
+        let randomIndex = Int(arc4random_uniform(UInt32(EMOTIONAL_FOLLOWUP.count)))
+        
+        return EMOTIONAL_FOLLOWUP[randomIndex]
+    }
 }
