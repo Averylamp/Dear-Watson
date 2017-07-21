@@ -29,11 +29,35 @@ class EmotionAnalyzer: NSObject {
         }
     }
     
+    func processEmotions(emotions: [[String:Any]])->[Emotions: Double]{
+        var result = [Emotions:Double]()
+        for emotion in emotions{
+            if let emotionID = emotion["tone_id"] as? String, let emotionValue = emotion["score"] as? Double{
+                switch emotionID {
+                case "joy":
+                    result[.Joy] = emotionValue
+                case "fear":
+                    result[.Fear] = emotionValue
+                case "disgust":
+                    result[.Disgust] = emotionValue
+                case "sadness":
+                    result[.Sadness] = emotionValue
+                case "anger":
+                    result[.Anger] = emotionValue
+                default:
+                    print("Unknown emotion sent back")
+                }
+                
+            }
+        }
+        return result
+        
+    }
+    
     func keywordsFrom(text:String,  completion: @escaping ([[String:Any]])->Void){
         let params:[String:Any] = ["text":text,"limit":"5"]
         let headers:[String:Any] = ["Content-Type":"application/json"]
-        print(params)
-        Alamofire.request("https://openwhisk.ng.bluemix.net/api/v1/web/Blue%20Hack%20NA%202017_Pengwings/default/keywords.json", method: .post, parameters:["text":"Hello my name is Avery Lamp.  I like ice cream and other things like coding and eating food."], encoding: JSONEncoding.default, headers: ["Content-Type":"application/json"]).responseJSON { (response) in
+        Alamofire.request("https://openwhisk.ng.bluemix.net/api/v1/web/Blue%20Hack%20NA%202017_Pengwings/default/keywords.json", method: .post, parameters:["text":text], encoding: JSONEncoding.default, headers: ["Content-Type":"application/json"]).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -46,6 +70,18 @@ class EmotionAnalyzer: NSObject {
                 completion([])
             }
         }
+    }
+    
+    func processKeywords(result: [[String:Any]]) -> [String]{
+        var results = [String]()
+        
+        for word in result {
+            if let wordStr = word["text"] as? String{
+                results.append(wordStr)
+            }
+        }
+        
+        return results
     }
 
 }

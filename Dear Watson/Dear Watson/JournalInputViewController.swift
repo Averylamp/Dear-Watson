@@ -11,7 +11,18 @@ import AVKit
 import AVFoundation
 import LTMorphingLabel
 
-let journalEntryKey = "JournalEntryKey"
+
+struct journalEntryKeys {
+    static let journalStoreKey = "JournalStoreKey"
+    static let dateKey = "date"
+    static let fullTextKey = "fullText"
+    static let emotionKey = "emotions"
+    static let keywordsKey = "keywords"
+    static let journalTitleKey = "journalTitle"
+}
+
+
+
 let joyfulFace = "😀"
 let sadFace = "😢"
 let disgustedFace = "🙄"
@@ -19,13 +30,22 @@ let fearfulFace = "😨"
 let angryFace = "😡"
 let smileyFace = "😁"
 
-class JournalInputViewController: UIViewController {
+enum ConversationState {
+    case generalQuestion
+    case generalFollowUpQuestion
+    case emotionalQuestion
+    case emotionalFollowup
+    case finishedQuestioning
+}
 
+class JournalInputViewController: UIViewController {
     var synth = AVSpeechSynthesizer()
 
     @IBOutlet weak var responseTextView: UITextView!
     var appleSpeechAnalyzer =  AppleSpeechController()
     var speechActive = false
+
+    var conversationState:ConversationState = .generalQuestion
 
     @IBOutlet weak var questionLabel: LTMorphingLabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -43,11 +63,11 @@ class JournalInputViewController: UIViewController {
         appleSpeechAnalyzer.setupRecognizer()
         questionLabel.text = ""
         questionLabel.morphingEffect = .fall
-        questionLabel.morphingDuration = 2.0
-        questionLabel.morphingCharacterDelay = 0.05
-
-
+        questionLabel.morphingDuration = 1.0
+        questionLabel.morphingCharacterDelay = 0.02
+        self.responseTextView.text = "I'm doing pretty well.  Today I went to Chipotle for dinner and I ate a really tasty burrito bowl.  I also went home and took a nap afterwards which was refreshing.  Before that though, I hung out with a friend and we watched some TV shows. \n\nIt was pretty fun.  I also worked at the office and hung out with some interns."
         self.delay(delay: 1.0) {
+            self.conversationState = .generalFollowUpQuestion
             let question = PhraseGeneration.sharedInstance.getGreeting()
             self.askQuestion(question: question)
         }
@@ -56,7 +76,7 @@ class JournalInputViewController: UIViewController {
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        saveInformation()
     }
     let mockEntries = [
       "Today I went on a walk with my dog and I saw ducklings! They were really cute and
@@ -82,29 +102,118 @@ class JournalInputViewController: UIViewController {
     func saveInformation(){
         let defaults = UserDefaults.standard
         var fullAllEntries = [[String:Any]]()
-        if let allEntries = defaults.array(forKey: journalEntryKey), let formattedAllEntries = allEntries as? [[String:Any]] {
+        if let allEntries = defaults.array(forKey: journalEntryKeys.journalStoreKey), let formattedAllEntries = allEntries as? [[String:Any]] {
             fullAllEntries = formattedAllEntries
         }
         var journalEntry = [String:Any]()
-        journalEntry["journalTitle"] = "Journal Entry 1"
-        journalEntry["date"] = Date()
-        journalEntry["fullText"] = self.responseTextView.text
-        journalEntry["keywords"] = []
-        journalEntry["emotions"] = []
+        journalEntry[journalEntryKeys.journalTitleKey] = "Journal Entry \(fullAllEntries.count + 1)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM H:mm a yyyy"
+        journalEntry[journalEntryKeys.dateKey] = dateFormatter.string(from: Date())
+        journalEntry[journalEntryKeys.fullTextKey] = self.responseTextView.text
+        var count = 2
+        EmotionAnalyzer.sharedInstance.keywordsFrom(text: self.responseTextView.text) { (response) in
+            count -= 1
+            let keywordResponse = EmotionAnalyzer.sharedInstance.processKeywords(result: response)
+            journalEntry[journalEntryKeys.keywordsKey] = keywordResponse
+            if count == 0{
+                fullAllEntries.append(journalEntry)
+                defaults.set(fullAllEntries, forKey: journalEntryKeys.journalStoreKey)
+                self.delay(delay: 0.0, closure: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        }
+        EmotionAnalyzer.sharedInstance.emotionsFrom(text: self.responseTextView.text) { (response) in
+            count -= 1
+            let emotions = EmotionAnalyzer.sharedInstance.processEmotions(emotions: response)
+            var emotionCoverted = [[Any]]()
+            for (emotion, value) in emotions{
+                emotionCoverted.append([emotion.emotionToString(), value])
+            }
+            journalEntry[journalEntryKeys.emotionKey] = emotionCoverted
+            if count == 0{
+                fullAllEntries.append(journalEntry)
+                print(fullAllEntries)
+                defaults.set(fullAllEntries, forKey: journalEntryKeys.journalStoreKey)
+                self.delay(delay: 0.0, closure: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        }
 
 
-        fullAllEntries.append(journalEntry)
-        defaults.set(fullAllEntries, forKey: journalEntryKey)
     }
 
 
 
     @IBAction func nextQuestionClicked(_ sender: Any) {
-        self.askQuestion(question: "Cool.  Anything else new today?")
-        self.delay(delay: 0.3) {
-            self.responseTextView.text = self.responseTextView.text + "\n\n"
-            self.fullText = self.responseTextView.text
+        var question = ""
+        switch self.conversationState {
+        case .generalQuestion:
+            question = PhraseGeneration.sharedInstance.getGreeting()
+            self.conversationState = .generalFollowUpQuestion
+            self.askQuestion(question:question)
+            self.delay(delay: 0.3) {
+                self.responseTextView.text = self.responseTextView.text + "\n\n"
+                self.fullText = self.responseTextView.text
+            }
+        case .generalFollowUpQuestion:
+            print("General Followup")
+            question = PhraseGeneration.sharedInstance.getFollowup()
+            self.conversationState = .emotionalQuestion
+            self.askQuestion(question:question)
+            self.delay(delay: 0.3) {
+                self.responseTextView.text = self.responseTextView.text + "\n\n"
+                self.fullText = self.responseTextView.text
+            }
+        case .emotionalQuestion:
+            print("Emotional Question")
+            EmotionAnalyzer.sharedInstance.emotionsFrom(text: self.responseTextView.text, completion: { (results) in
+                print(results)
+                if let topResult = results.first!["tone_id"] as? String {
+                    print(topResult)
+                    let processedResults = EmotionAnalyzer.sharedInstance.processEmotions(emotions: results)
+                    switch topResult {
+                    case "joy":
+                        question  = PhraseGeneration.sharedInstance.getHappyResponse()
+                    case "fear":
+                        question  = PhraseGeneration.sharedInstance.getFearResponse()
+                    case "disgust":
+                        question  = PhraseGeneration.sharedInstance.getDisgustedResponse()
+                    case "sadness":
+                        question  = PhraseGeneration.sharedInstance.getSadResponse()
+                    case "anger":
+                        question  = PhraseGeneration.sharedInstance.getAngryResponse()
+                    default:
+                        print("Unknown emotion sent back")
+                        question  = PhraseGeneration.sharedInstance.getHappyResponse()
+                    }
+                    self.delay(delay: 0.0, closure: {
+                        self.askQuestion(question:question)
+                    })
+                    self.delay(delay: 0.3) {
+                        self.responseTextView.text = self.responseTextView.text + "\n\n"
+                        self.fullText = self.responseTextView.text
+                    }
+                    self.conversationState = .emotionalFollowup
+                }
+            })
+        case .emotionalFollowup:
+            print("Emotional Followup")
+            question = PhraseGeneration.sharedInstance.getEmotionalFollowup()
+            self.conversationState = .finishedQuestioning
+            self.askQuestion(question:question)
+            self.delay(delay: 0.3) {
+                self.responseTextView.text = self.responseTextView.text + "\n\n"
+                self.fullText = self.responseTextView.text
+            }
+        case .finishedQuestioning:
+            print("Finished questioning")
+            backButtonClicked(UIButton())
         }
+
+
     }
 
     @IBAction func recordButtonClicked(_ sender: Any) {
@@ -115,7 +224,7 @@ class JournalInputViewController: UIViewController {
         self.stopAppleSTT()
         speakResponse(text: question)
         questionLabel.text = question
-        delay(delay: 1.0) {
+        delay(delay: 3.5) {
             self.startAppleSTT()
         }
     }
@@ -124,7 +233,7 @@ class JournalInputViewController: UIViewController {
     func speakResponse(text:String){
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.5
+        utterance.rate = 0.4
         utterance.volume = 1.0
         self.synth.speak(utterance)
         faceLabel.growAndShrink(duration: 3.0, times: 6)

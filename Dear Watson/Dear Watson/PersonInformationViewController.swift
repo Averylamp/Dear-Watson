@@ -10,22 +10,29 @@ import UIKit
 import Charts
 
 class PersonInformationViewController: UIViewController {
-
-    var happyData = [Double]()
-    var sadData = [Double]()
-    var angerData = [Double]()
+    
+    var joyfulData:[Double] = [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263]
+    var sadData:[Double] = [0.41, 0.753, 0.4236,0.2135,0.952,0.2519,0.81263]
+    var angerData:[Double] = [0.01, 0.253, 0.11,0.7135,0.952,0.2519,0.81263]
+    var disgustedData:[Double] = [0.01, 0.253, 0.4236,0.2135,0.952,0.7519,0.81263]
+    var fearData:[Double] = [0.01, 0.653, 0.1236,0.2135,0.252,0.2519,0.81263]
     
     var scrollView = UIScrollView()
     
     var titleLabel = UILabel()
     
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // TODO: put in storyboard
-        titleLabel.frame = CGRect(x: 20, y: 10, width: self.view.frame.width, height: 90)
+        titleLabel.frame = CGRect(x: 40, y: 10, width: self.view.frame.width - 80, height: 90)
         titleLabel.text = "Historical Data"
-        titleLabel.font = titleLabel.font.withSize(self.view.frame.width * 0.1)
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: "Avenir-Medium", size: 36)
         self.view.addSubview(titleLabel)
         
         
@@ -40,72 +47,112 @@ class PersonInformationViewController: UIViewController {
         var y = CGFloat(10)
         
         let titleHeight = self.view.frame.width * 0.2
-        let titleWidth = self.view.frame.width * 0.2
+        let titleWidth = self.view.frame.width
         
         let margin = CGFloat(20)
         
+        
         // Happy
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😁", color: UIColor.yellow)
+        self.addChart(titleFrame: CGRect( x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [joyfulData], chartTitle: [joyfulFace], colors: [NSUIColor.yellow])
         
         y = y + titleHeight + graphHeight + margin
         
         // Sad
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.blue)
-        
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [sadData], chartTitle: [sadFace], colors: [UIColor.blue])
+
         y = y + titleHeight + graphHeight + margin
-        
+
         // Disgust
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.green)
-        
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [disgustedData], chartTitle: [disgustedFace], colors: [UIColor.green])
+
         y = y + titleHeight + graphHeight + margin
-        
+
         // Fear
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😢", color: UIColor.purple)
-        
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [fearData], chartTitle: [fearfulFace], colors: [UIColor.purple])
+
         y = y + titleHeight + graphHeight + margin
-        
+
         // Anger
-        self.addChart(titleFrame: CGRect(x: (self.view.frame.width/2)-x, y: y, width: titleWidth, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [0.01, 0.253, 0.1236,0.2135,0.952,0.2519,0.81263], chartTitle: "😡", color: UIColor.red)
-        
+        self.addChart(titleFrame: CGRect(x:50, y: y, width: titleWidth - 100, height: titleHeight), chartFrame: CGRect(x: x, y: y + titleHeight, width: graphWidth, height: graphHeight), dataPoints: [angerData], chartTitle: [angryFace], colors: [UIColor.red])
+
         y = y + titleHeight + graphHeight + margin
         
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: y+50)
         
     }
     
-    func addChart(titleFrame: CGRect, chartFrame:CGRect, dataPoints:[Double], chartTitle:String, color: UIColor){
+    func addChart(titleFrame: CGRect, chartFrame:CGRect, dataPoints:[[Double]], chartTitle:[String], colors: [NSUIColor]){
         
         let title = UILabel(frame: titleFrame)
-        title.text = chartTitle
-        title.font = title.font.withSize(self.view.frame.width * 0.1)
+        title.text = chartTitle[0]
+        title.textAlignment = .center
+        title.font = title.font.withSize(150)
         self.scrollView.addSubview(title)
         
         
         let chart = LineChartView(frame: chartFrame)
         
+        var allDataSets = LineChartData()
+        var count = 0
         var dataEntries = [ChartDataEntry]()
-        for i in 0..<dataPoints.count{
+        for dataSet in dataPoints {
+            for i in 0..<dataSet.count{
+                let dataEntry = ChartDataEntry(x: 10 * Double(i), y: dataSet[i])
+                dataEntries.append(dataEntry)
+                
+            }
             
-            let dataEntry = ChartDataEntry(x: 10 * Double(i), y: dataPoints[i])
-            dataEntries.append(dataEntry)
+            let dataset = LineChartDataSet(values: dataEntries, label: nil)
+            dataset.label = chartTitle[count]
+            
+            switch chartTitle[0] {
+            case joyfulFace:
+                dataset.label =  dataset.label! + " Joy"
+            case sadFace:
+                dataset.label =  dataset.label! + " Sadness"
+            case fearfulFace:
+                dataset.label =  dataset.label! + " Fear"
+            case disgustedFace:
+                dataset.label =  dataset.label! + " Disgust"
+            case angryFace:
+                dataset.label =  dataset.label! + " Anger"
+            default:
+                dataset.label =  dataset.label! + " Joy"
+            }
+            dataset.circleRadius  = 5
+            dataset.mode = .horizontalBezier
+            dataset.lineWidth = 4
+            
+//            dataset.setColor(UIColor.blue)
+//            if count > 2{
+//                dataset.setColor(UIColor.green)
+//                dataset.fillColor = UIColor.orange
+//                dataset.highlightColor = UIColor.orange
+//                dataset.setCircleColors(UIColor.darkGray)
+//            }
+//            dataset.colors = colors
+            print(count)
+            dataset.setColors([colors.first!], alpha: 1.0)
+//            dataset.setColor(colors[count])
+            dataset.setCircleColor(UIColor.black)
+            allDataSets.addDataSet(dataset)
+            count += 1
         }
+//        chart.animate(yAxisDuration: 2.0)
+//       count = 0
+//        for set in allDataSets{
+//            set.setColor(colors[count])
+//            count += 1
+//        }
+//        chart.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.easeOutExpo)
+//        chart.animate(xAxisDuration: 2.0)
+        chart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeOutQuad)
         
-        let dataset = LineChartDataSet(values: dataEntries, label: nil)
-        dataset.label = nil
-        dataset.circleRadius  = 4
-        dataset.mode = .horizontalBezier
-        dataset.lineWidth = 2
-        dataset.setColor(color)
-        dataset.setCircleColor(color)
+        print(chart.lineData?.getColors())
+        chart.data = allDataSets
         
-        chart.data = ChartData(dataSet: dataset)
-        
-        chart.chartDescription = nil
-        
-        var dataSets = [IChartDataSet]()
-        dataSets.append(dataset)
-        chart.data = LineChartData(dataSet: dataset)
         self.scrollView.addSubview(chart)
+        
         
     }
     
