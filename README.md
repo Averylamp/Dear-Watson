@@ -1,6 +1,6 @@
 # Dear Watson
 
-Dear Watson is an iOS app for keeping a journal that will help you understand yourself better. Instead of typing, you can simply talk to the app as if you are talking to a friend, and the app will transcribe it for you. Using IBM Watson Tone Analyzer and Natural Language Understanding Services, the app automatically analyzes your journal entry and gives information about your emotions and summarizes the highlights of your day. You can view graphs and reflect on how your emotions have changed over the past week.
+Dear Watson is a digital journal companion that helps you understand your emotions better. Instead of typing, you can simply talk to the app as if you were talking to a friend, and the app will transcribe for you. Using IBM Watson Tone Analyzer and Natural Language Understanding Services, the app automatically analyzes your journal entry and gives information about your emotions and summarizes the highlights of your day. You can view graphs and reflect on how your emotions have changed over the past week.
 
 ## How It Works 
 
